@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { Chart } from 'react-google-charts'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
+
+
+let options = {
+  title: 'Cricket Score',
+  pieChart: '0.4',
+  slices: [
+    {
+      color: 'green'
+    },
+    {
+      color: 'blue'
+    },
+    {
+      color: 'red'
+    }
+  ],
+  legend: {
+    position: "left"
+  }
+}
 function App() {
+  const [score, setscore] = useState(
+    [['username', 'score'], ['Rohit sharma', 40], ['virat', 11]]
+  )
+  async function getscore() {
+    let response = await axios.get('http://localhost:4999/livescore')
+    console.log(response.data.Rohitsharma)
+    console.log(response.data.virat)
+    setscore(
+      [['username', 'score'], ['Rohit sharma', response.data.Rohitsharma], 
+      ['virat', response.data.virat]]
+    )
+  }
+  useEffect(function () {
+    getscore()
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>work progress</div>
+      <Chart
+        chartType='PieChart'
+        data={score}
+        options={options}
+        width={"100%"}
+        height={"400px"}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
