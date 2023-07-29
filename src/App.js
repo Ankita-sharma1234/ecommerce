@@ -1,56 +1,31 @@
-import { Chart } from 'react-google-charts'
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react'
+// import './App.css'
+import { Routes, Route } from "react-router-dom"
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import FrontePage from './First/FrontePage'
+import Profile from './Second/Profile';
+import Sidebar from './Second/Sidebar';
+import Gallery from './Second/Gallery';
+import Post from './Second/Post';
+import Todo from './Second/Todo';
 
 
-
-let options = {
-  title: 'Cricket Score',
-  pieChart: '0.4',
-  slices: [
-    {
-      color: 'green'
-    },
-    {
-      color: 'blue'
-    },
-    {
-      color: 'red'
-    }
-  ],
-  legend: {
-    position: "left"
-  }
-}
 function App() {
-  const [score, setscore] = useState(
-    [['username', 'score'], ['Rohit sharma', 40], ['virat', 11]]
-  )
-  async function getscore() {
-    let response = await axios.get('http://localhost:4999/livescore')
-    console.log(response.data.Rohitsharma)
-    console.log(response.data.virat)
-    setscore(
-      [['username', 'score'], ['Rohit sharma', response.data.Rohitsharma], 
-      ['virat', response.data.virat]]
+    return (
+        <div className='App'>
+            <header className='App-header'>
+                <Routes>
+                    <Route path='/' element={<FrontePage />}></Route>
+                    <Route path='/sidebar' element={<Sidebar />}></Route>
+                    <Route path='/profile' element={<Profile />}></Route>
+                    <Route path='/gallery' element={<Gallery />}></Route>
+                    <Route path='/post' element={<Post />}></Route>
+                    <Route path='/todo' element={<Todo />}></Route>
+                </Routes>
+            </header>
+        </div>
     )
-  }
-  useEffect(function () {
-    getscore()
-  }, [])
-
-  return (
-    <div>
-      <div>work progress</div>
-      <Chart
-        chartType='PieChart'
-        data={score}
-        options={options}
-        width={"100%"}
-        height={"400px"}
-      />
-    </div>
-  )
 }
 
 export default App
