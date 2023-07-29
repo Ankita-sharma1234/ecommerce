@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
 import Sidebar from "./Sidebar";
+///////////////image/////////////////////////////
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import "bootstrap/dist/css/bootstrap.min.css";
 ////////////redux//////////////////////////
 import { useDispatch, useSelector } from "react-redux";
 import { userFetchThunk } from "../store/features/sellerSlice";
@@ -14,14 +20,31 @@ function Profile() {
   }, []);
 
   return (
-    <div style={{ display: "flex", color: "red" }}>
-      <div >
+    <div style={{ display: "flex" }}>
+      <div>
         <Sidebar />
       </div>
       <div>
-        <h1 style={{color:"red"}}>Name:{data.address}</h1>
-        <h1>{data.id}</h1>
-
+        <div style={{ display: "flex", padding: "6vh" }}>
+          <h3>Profile</h3>
+          <h3 style={{ marginLeft: "122vh" }}>Leanne Graham</h3>
+          {/* <h1 style={{color:"red"}}>Name:{data.address}</h1>
+        <h1>{data.id}</h1> */}
+        </div>
+        <hr />
+        <div style={{ display: "flex",gap:"100vh",padding:"6vh" }}>
+          <div>
+            <Container>
+              <Row>
+                <Col xs={6} md={4}>
+                  <Image src="https://panorbit.in/wp-content/uploads/2019/hotlink-ok/1001.jpeg" height={"100vh"}  roundedCircle />
+                </Col>
+              </Row>
+            </Container>
+            <h1>vjksdk</h1>
+          </div>
+          <div>111111ndkhddjjikkkkkkk</div>
+        </div>
       </div>
     </div>
   );

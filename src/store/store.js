@@ -56,7 +56,8 @@ const store = configureStore({
   },
   middleware: [
     ...getDefaultMiddleware(),
-    thunk 
+    thunk,
+    customMiddleware // Optional: Add your custom middleware if needed
   ]
 });
 

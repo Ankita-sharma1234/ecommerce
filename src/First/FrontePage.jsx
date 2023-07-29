@@ -28,5 +28,6 @@ const FrontePage= () => {
 </>
   );
 };
-    
+
 export default FrontePage;
+
