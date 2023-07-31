@@ -1,15 +1,71 @@
 * {
-	box-sizing: border-box;
-}
-body {
-	font-family: sans-serif;
-	max-width: 1024px;
-	margin: 0 auto;
-	padding: 0 2rem;
-	text-align: center;
-}
-.my-responsive-box {
-	width: 100%;
-	padding: 5rem;
-	background: lightgray;
-}
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	  }
+	  
+	  
+	  body {
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		height: 50px;
+		font-family: sans-serif;
+		text-transform: capitalize;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	  }
+	  
+	  .login-box {
+		background-color:  #fff;
+		opacity: 0.8;
+		width: 600px;
+		height: 520px;
+		padding: 70px 30px;
+		position: relative;
+		border-radius: 19px;
+		box-shadow: 5px 10px 5px #888888
+	  }
+	  
+	
+	  
+	  .login-box h1 {
+		text-align: center;
+		font-size: 22px;
+		text-decoration: solid;
+	  }
+	  
+	  .login-box span {
+		font-weight: bold;
+		display: block;
+		letter-spacing: 0.5px;
+	  }
+	  
+	 
+	  
+	  
+	
+	  .mainDiv{
+      display: flex;
+	  gap: 22px;
+	  
+	  }
+	  .image{
+	    height: 35px;
+		width: 35px;
+		border-radius:50px
+	  }
+	  .maindiv hr {
+		margin-top: 5px; /* Adjust the margin as desired */
+		border: 1px solid black; /* Change the border color as desired */
+	  }
+	 
+	  .border{
+		display: block;
+	  }
+	  h5{
+		color: #383636;
+	  }
+	  
+	  

@@ -39,27 +39,15 @@
 // export default store;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import { applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import userReducer from "./features/sellerSlice";  // Your combined reducers
+import { configureStore } from "@reduxjs/toolkit";
+import userReducer from "./features/sellerSlice"; 
 
-
-const customMiddleware = store => next => action => {
-  console.log('Dispatching:', action);
-  return next(action);
-};
 
 const store = configureStore({
   reducer: {
-    emp: userReducer
-  },
-  middleware: [
-    ...getDefaultMiddleware(),
-    thunk,
-    customMiddleware // Optional: Add your custom middleware if needed
-  ]
-});
+      emp: userReducer
+  }
+})
 
 export default store;
 

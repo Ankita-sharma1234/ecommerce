@@ -7,22 +7,33 @@ function Sidebar() {
     <>
     <aside>
       <p> Menu </p>
-     <a href="javascript:void(0)">
-        
-        <h2 className="fa fa-user-o" aria-hidden="true" />
-       Profile 
-      </a>
       <a href="javascript:void(0)">
+        
+      <Link to="/profile">
+        <h2 className="fa fa-laptop" aria-hidden="true" />
+        Profile
+        </Link>
+      
+      </a> 
+      <a href="javascript:void(0)">
+        <Link to="/post">
         <h2 className="fa fa-laptop" aria-hidden="true" />
         Post
+        </Link>
+        
+     
       </a>
       <a href="javascript:void(0)">
-        <h2 className="fa fa-clone" aria-hidden="true" />
-      Gallery
+      <Link to="/gallery">
+        <h2 className="fa fa-laptop" aria-hidden="true" />
+        Gallery
+        </Link>
       </a>
       <a href="javascript:void(0)">
-        <h2 className="fa fa-star-o" aria-hidden="true" />
+      <Link to="/todo">
+        <h2 className="fa fa-laptop" aria-hidden="true" />
         ToDo
+        </Link>
       </a>
     </aside>
     <div className="social">

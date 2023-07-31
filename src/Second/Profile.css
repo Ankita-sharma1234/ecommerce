@@ -1,0 +1,38 @@
+/* body{
+    background: none;
+} */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20px;
+  font-family: Roboto;
+  padding: 20px;
+}
+
+nav ul{
+  list-style-type:none;
+  display:flex;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  padding: 20px;
+  transition: 0.25s;
+}
+.contact{
+  margin-left: 110vh;
+}
+
+.map{
+  /* height: 40vh;
+  width: 70vh; */
+  border-radius: 20vh;
+  
+}

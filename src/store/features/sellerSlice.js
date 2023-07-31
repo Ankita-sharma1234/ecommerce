@@ -2,19 +2,19 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 const initialState = {
-    data: {},
+    data: [],
     error: "",
     status: false,
 }
 
 export const userFetchThunk = createAsyncThunk(
-    "userFetchThunk/post",
+    "userFetchThunk/get",
     async () => {
         try {
-            
-            const { data } = await axios.post("https://panorbit.in/api/users.json")
-            console.log(data, "sellerSliceeeeeeee")
-            return data;
+
+            const { data } = await axios.get("https://panorbit.in/api/users.json")
+            // console.log(data, "sellerSliceeeeeeee")
+            return data.users;
         } catch (error) {
             if (error.response.status === 404) {
                 throw new Error("something Wrong")
@@ -32,7 +32,7 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
 
         builder.addCase(userFetchThunk.pending, (state, action) => {
-            state.data = [];
+            state.data = ['pending'];
             state.status = true;
             state.error = "";
         })
@@ -42,7 +42,7 @@ const userSlice = createSlice({
             state.error = "";
         })
         builder.addCase(userFetchThunk.rejected, (state, action) => {
-            state.data = [];
+            state.data = ['rejected'];
             state.status = false;
             state.error = action.error.message;
         })
