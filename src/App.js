@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Routes, Route } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'mdb-react-ui-kit/dist/css/mdb.min.css'
@@ -7,25 +7,34 @@ import Profile from './Second/Profile';
 import Gallery from './Second/Gallery';
 import Post from './Second/Post';
 import Todo from './Second/Todo';
+import List from './First/FrontePage';
 import Sidebar from './Second/Sidebar';
+import axios from "axios";
+
 
 
 function App() {
+    const [userList, setUserlist] = useState([]);
+  
+    useEffect(() => {
+      axios.get("https://panorbit.in/api/users.json").then((response) => {
+        setUserlist(response.data.users);
+      });
+    }, []);
+  
     return (
-        <div>
-            <header >
-                <Routes>
-                    <Route path='/' element={<FrontePage />}></Route>
-
-                    <Route path='/profile' element={<Profile />}></Route>
-                    <Route path='/gallery' element={<Gallery />}></Route>
-                    <Route path='/post' element={<Post />}></Route>
-                    <Route path='/todo' element={<Todo />}></Route>
-                    <Route path='/sidebar' element={<Sidebar />}></Route>
-                </Routes>
-            </header>
-        </div>
-    )
-}
+      <>
+      <Routes>
+        <Route path="/" element={<List data={userList} />} />
+        <Route path="/:id/profile" element={<Profile data={userList} />} />
+        <Route path="/:id/post" element={<Post data={userList} />} />
+        <Route path="/:id/gallery" element={<Gallery data={userList} />} />
+        <Route path="/:id/todo" element={<Todo e data={userList} />} />
+        <Route path='/sidebar' element={<Sidebar/>}></Route>
+      </Routes>
+      </>
+    );
+  }
+  
 
 export default App

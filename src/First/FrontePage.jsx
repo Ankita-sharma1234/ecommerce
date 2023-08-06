@@ -1,43 +1,83 @@
-import React, { useEffect } from "react";
+
+////////////////////////////////////////
+import React from "react";
 import "./Font.css";
-import { useDispatch, useSelector } from "react-redux";
-import { userFetchThunk } from "../store/features/sellerSlice";
 import { Link } from "react-router-dom";
 
-function FrontePage() {
-  const { data, status } = useSelector((state) => state.emp);
-
-  const dispatch = useDispatch();
-  console.log("This is data in profile", data);
-  useEffect(() => {
-    dispatch(userFetchThunk());
-  }, []);
+const List = ({ data }) => {
   return (
-    <div
-      style={{ background: "file:///C:/Users/ankita/Downloads/wave%20(3).svg" }}
-    >
-      <div className="login-box">
-        <h1>Select an account</h1>
-        <div className="text-box">
-          {data.map((item, index) => {
-            return (
-              <div className="mainDiv">
-                <Link to="/profile">
-                  {" "}
+    <div>
+      <div className="back">
+        <div
+          style={{
+            position: "absolute",
+            background: "#fff",
+            width: "40vw",
+            borderRadius: "30px",
+            boxShadow: "5px 5px 5px 5px #8080804b",
+          }}
+        >
+          <div
+            style={{
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
+              padding: "30px",
+              background: "#80808033",
+              fontWeight: " 600",
+              borderTopLeftRadius: "30px",
+              borderTopRightRadius: "30px",
+            }}
+          >
+            <h5 style={{ fontWeight: "500" }}>
+              <b>Select an account</b>
+            </h5>
+          </div>
+          <div>
+            <ul
+              style={{
+                listStyle: "none",
+                padding: "2rem",
+                overflowY: "scroll",
+                height: "60vh",
+                borderBottomLeftRadius: "30px",
+                borderBottomRightRadius: "30px",
+              }}
+            >
+              {data.map((user) => (
+                <li
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    borderBottom: "1px solid #80808033",
+                    padding: "10px",
+                  }}
+                >
                   <img
-                    className="image"
-                    src={item.profilepicture}
-                    alt=""
-                  />{" "}
-                </Link>{" "}
-                <h5>{item.name}</h5>
-              </div>
-            );
-          })}
+                    src={user.profilepicture}
+                    alt="img"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      marginRight: "10px",
+                      borderRadius: "50%",
+                    }}
+                  />
+                 
+                  <Link to={`/${user.id}/profile`} style={{textDecoration:"none",color:"black"}}>
+                    <h5 style={{ marginBottom: "0", fontSize: "18px" }}>
+                      {user.name}
+                    </h5>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default FrontePage;
+export default List;
+
